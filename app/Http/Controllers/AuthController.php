@@ -106,12 +106,12 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function userProfile() {
-        $user = auth()->user();
-        \Log::info("user here", [$user]);
+    public function userProfile(Request $request) {
+        //$user = auth()->user();
+        //\Log::info("user here", [$user]);
         $userdata = User::with(['investments' => function($q){
             $q->with('plan')->whereStatus('running')->first();
-        },'withdrawals'])->where('id', $user->id)->first();
+        },'withdrawals'])->where('id', $request->id)->first();
         return response()->json($userdata);
     }
 
@@ -180,6 +180,9 @@ class AuthController extends Controller
     protected function createNewToken($token){
         return response()->json([
             'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => auth()->user()
         ]);
     }
 
