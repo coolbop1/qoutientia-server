@@ -57,11 +57,10 @@ class AuthController extends Controller
             'phone' => 'required|regex:/[0-9]{11}/',
             'password' => 'required|string|confirmed|min:6',
         ]);
-        
+
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
-
         $user = User::create(array_merge(
                     $validator->validated(),
                     ['password' => bcrypt($request->password)]
