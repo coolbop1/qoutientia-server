@@ -57,8 +57,7 @@ class AuthController extends Controller
             'phone' => 'required|regex:/[0-9]{11}/',
             'password' => 'required|string|confirmed|min:6',
         ]);
-
-        echo "got here";
+        
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
