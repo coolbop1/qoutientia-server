@@ -21,9 +21,9 @@ class RegisterController extends Controller
 
         if($user) {
             $user->update(["remember_token" => $code]);
-            $data = ([
+            /*$data = ([
                 "code" => $code,
-                ]);
+                ]);*/
             //Mail::to($request->vemail)->send(new VerifyEmail($data));
             return response([
                 'message' => 'Verification email sent successfully',
