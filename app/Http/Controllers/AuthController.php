@@ -58,7 +58,7 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed|min:6',
         ]);
 
-        \Log::info("got here");
+        echo "got here";
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
