@@ -167,7 +167,6 @@ class AuthController extends Controller
         ], 202);
     }
 
-    
 
     /**
      * Get the token array structure.
