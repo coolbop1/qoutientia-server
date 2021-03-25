@@ -72,7 +72,7 @@ class AuthController extends Controller
             "username" => $request->name,
             "phone" => $request->phone,
             ]);
-        Mail::to($request->email)->send(new WelcomeMail($data));
+        //Mail::to($request->email)->send(new WelcomeMail($data));
 
         return response([
             'message' => 'User successfully registered',

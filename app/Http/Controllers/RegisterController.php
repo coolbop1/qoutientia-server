@@ -24,7 +24,7 @@ class RegisterController extends Controller
             $data = ([
                 "code" => $code,
                 ]);
-            Mail::to($request->vemail)->send(new VerifyEmail($data));
+            //Mail::to($request->vemail)->send(new VerifyEmail($data));
             return response([
                 'message' => 'Verification email sent successfully',
                 'code' => $code,
